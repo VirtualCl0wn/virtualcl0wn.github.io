@@ -29,11 +29,7 @@
 @media (max-width: 600px) {
   .panel { clip-path: none; }
   .hero_slogan {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "mark"
-      "name"
-      "sub";
+    font-size: 2.25rem;
   }
 }
 
@@ -193,41 +189,43 @@ section.panel {
 }
 
 .hero_slogan {
+  font-size: clamp(2.5rem, 7vw, 6.5rem);
   display: grid;
   grid-template-columns: auto auto;
   grid-template-areas:
     "name mark"
     "sub  mark";
   align-items: center;
-  column-gap: clamp(16px, 2.5vw, 32px);
-  row-gap: 6px;
+  column-gap: 0.3em;
+  row-gap: 0;
 }
 
 .hero_slogan h1 {
   grid-area: name;
-  font-size: clamp(2.75rem, 7vw, 6.5rem);
-  line-height: 0.95;
+  font-size: 1em;
+  line-height: 1;
   margin: 0;
-  justify-self: end;   /* pushes it against the logo */
-  text-align: right;
-}
-
-.hero_mark {
-  height: 56px;
   justify-self: end;
+  text-align: right;
 }
 
 .hero_sub {
   grid-area: sub;
   font-family: var(--font-display);
-  font-size: clamp(1.15rem, 2.4vw, 2.1rem);
-  line-height: 1.1;
+  font-size: 0.34em;
+  line-height: 1.2;
   margin: 0;
   color: var(--mint);
   opacity: 0.85;
   justify-self: end;
   text-align: right;
   align-self: start;
+}
+
+.hero_mark {
+  grid-area: mark;
+  height: calc(1em + 0.34em * 1.2);
+  width: auto;
 }
 
 .hero_kicker {
