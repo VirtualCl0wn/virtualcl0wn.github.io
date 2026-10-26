@@ -556,49 +556,40 @@ a { color: var(--mint); text-decoration: none; }
   overflow: hidden;
 }
 
-.augments {
+.skills {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;            /* boxes flow onto new lines like words */
   gap: 12px;
-  max-width: 640px;
+  counter-reset: skill;       /* starts an automatic count at 0 */
 }
 
-.augments li {
-  display: grid;
-  grid-template-columns: 180px 1fr 48px;
+.skills li {
+  display: flex;
   align-items: center;
-  gap: 16px;
-}
-
-.augment_name {
+  gap: 10px;
+  min-width: 160px;
+  height: 48px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  background: var(--black);
+  color: var(--mint);
+  border: 1px solid var(--mint);
+  border-radius: 6px;
   font-family: var(--font-system);
-  text-transform: uppercase;
   font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  counter-increment: skill;   /* adds 1 for each box */
 }
 
-.augment_bar {
-  display: block;
-  height: 100%;
-  width: var(--level);
-  background: repeating-linear-gradient(
-    to right,
-    var(--violet) 0 6px,
-    transparent 6px 8px
-  );
-}
-
-.augment_track {
-  height: 8px;
-  background: color-mix(in srgb, var(--lilac) 25%, transparent);
-}
-
-.augment_value {
-  font-family: var(--font-system);
-  font-size: 12px;
-  text-align: right;
-  color: var(--violet);
+/* The small index number before each skill */
+.skills li::before {
+  content: counter(skill, decimal-leading-zero);
+  font-weight: 300;
+  opacity: 0.5;
 }
 
 .dialogue {
